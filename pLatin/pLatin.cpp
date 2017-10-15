@@ -3,26 +3,27 @@
 
 #include "stdafx.h"
 
-
 #include <iostream>
 #include <string>
 using namespace std;
 string PigLatin(string word);
 bool vowelWord(char charactor);
-string word;
+
 int main()
 {
-
+	string word;
 	do {
-		cout << "To exit type 'Quit' or " << "Please enter a word to translate into Pig Latin: ";
+		cout << "To exit type 'Q1' or " << "Please enter a word to translate into Pig Latin: ";
 		cin >> word;
 
 		cout << "That translates to: "
 			<< PigLatin(word) << endl;
 
+
+
 	}
 
-	while (word != "Quit");
+	while (word != "Q1" && word != "q1");
 
 	return 0;
 }
@@ -30,7 +31,14 @@ int main()
 string PigLatin(string word)
 
 {
-	if (vowelWord(word.at(0))) {
+	if ((word == "for") || (word == "of") || (word == "to") || (word == "the")
+		|| (word == "a") || (word == "and") || (word == "but") || (word == "nor") || (word == "so") || (word == "yet") || (word == "or"))
+	{
+		return word;
+	}
+
+
+	else if (vowelWord(word.at(0))) {
 		return word + "ay";
 	}
 	else {
@@ -41,8 +49,6 @@ string PigLatin(string word)
 bool vowelWord(char charactor)
 
 {
-	const string VOWELS = "aeiouAEIOU";
-	return (VOWELS.find(charactor) != string::npos);
+	string isVowel = "aeiouAEIOU";
+	return (isVowel.find(charactor) != string::npos);
 }
-
-
